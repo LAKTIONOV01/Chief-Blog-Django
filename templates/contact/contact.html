@@ -22,10 +22,10 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6">
                     <div class="contact__map">
-                        <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d96748.5538666784!2d-74.25209557318462!3d40.73139236772185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25370329a0e1d%3A0xe1bcdc2adcfee473!2sNewark%2C%20NJ%2C%20USA!5e0!3m2!1sen!2sbd!4v1585643782289!5m2!1sen!2sbd"
-                                height="350" style="border:0;" allowfullscreen="" aria-hidden="false"
-                                tabindex="0"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d150505.31375918875!2d27.42856133449304!3d53.88472951347836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46dbcfd35b1e6ad3%3A0xb61b853ddb570d9!2z0JzQuNC90YHQuiwg0JzQuNC90YHQutCw0Y8g0L7QsdC70LDRgdGC0Yw!5e0!3m2!1sru!2sby!4v1742838461412!5m2!1sru!2sby"
+                                height="350" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
                     </div>
                     <div class="contact__widget">
                         <ul>
@@ -47,15 +47,11 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="contact__form">
                         <div class="contact__form__title">
-                            <h2>gET IN TOUCH</h2>
+                            <h2>GET IN TOUCH</h2>
                             <p>My experience with Realy is absolutely positive. The themes are beautifully designed
                                 and well documented. Realy theme provides quick support.</p>
                         </div>
                         <form action="{% url 'contact:feedback' %}" method="post">
-<!--                            <input type="text" placeholder="Name">-->
-<!--                            <input type="text" placeholder="Email">-->
-<!--                            <input type="text" placeholder="Website">-->
-<!--                            <textarea placeholder="Message"></textarea>-->
                             {% csrf_token %}
                             {{ form }}
                             <button type="submit" class="site-btn">Submit</button>

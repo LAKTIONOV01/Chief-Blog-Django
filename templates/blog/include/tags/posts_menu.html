@@ -1,5 +1,6 @@
 {% load menu_tags %}
-<li><a href="#">Recipes</a>
+<li>
+    <a href="{% url 'main:post_list' slug='recipes' %}">Recipes</a>
     <div class="header__megamenu__wrapper">
         <div class="header__megamenu">
             {% for post in last_posts %}

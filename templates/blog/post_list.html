@@ -9,15 +9,15 @@
                 <div class="row">
                     <div class="col-lg-8 col-md-8">
                         <div class="breadcrumb__text">
-                            <h2>Categories: <span>{{ post_list.first.category.name }}</span></h2>
+                            <h2>Categories: <span>{{ posts.first.category.name }}</span></h2>
                             <div class="breadcrumb__option">
-                                <a href="#">Home</a>
-                                <span>Recipes</span>
+                                <a href="/">Home</a>
+                                <span>{{ posts.first.category.name }}</span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                {% for post in post_list %}
+                                {% for post in posts %}
                                 <div class="categories__post__item">
                                     <div class="categories__post__item__pic small__item set-bg"
                                          data-setbg="{{ post.image.url }}">
@@ -31,8 +31,8 @@
                                         <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
                                         <ul class="post__widget">
                                             <li>by <span>{{ post.author }}</span></li>
-                                            <li>{{ post.prep_time }}min read</li>
-                                            <li>20 Comment</li>
+                                            <li>5 min read</li>
+                                            <li>{{ post.get_comments.count }} Comment</li>
                                         </ul>
                                         <p>{{ post.text |truncatewords:19 }}</p>
                                     </div>

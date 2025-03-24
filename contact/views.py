@@ -1,6 +1,6 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views.generic import CreateView, View
-from .models import ContactLinks
 from .models import ContactModel
 from .forms import ContactForm
 
@@ -11,10 +11,11 @@ class ContactView(View):
         return render(request, 'contact/contact.html', {'form': form})
 
 
+
 class CreateContact(CreateView):
     model = ContactModel
     form_class = ContactForm
-    success_url = '/'
+    success_url = reverse_lazy('contact:about')
 
 
 class AboutView(View):

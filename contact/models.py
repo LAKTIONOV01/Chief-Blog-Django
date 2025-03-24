@@ -17,10 +17,3 @@ class ContactModel(models.Model):
     def __str__(self):
         return f'{self.name} | {self.email}'
 
-
-
-class ContactLinks(models.Model):
-    facebook = models.URLField()
-    instagram = models.URLField()
-    facebook = models.URLField()
-    facebook = models.URLField()

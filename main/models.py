@@ -15,8 +15,8 @@ class Categories(MPTTModel):
 
     class Meta:
         db_table = 'Category'
-        verbose_name = 'Категория'
-        verbose_name_plural = 'Категории'
+        verbose_name = 'Category'
+        verbose_name_plural = 'Categories'
 
     def __str__(self):
         return self.name
@@ -27,8 +27,8 @@ class Tag(models.Model):
     slug = models.SlugField(max_length=100, unique=True)
 
     class Meta:
-        verbose_name = 'Тег'
-        verbose_name_plural = 'Теги'
+        verbose_name = 'Tag'
+        verbose_name_plural = 'Tags'
         db_table = 'Tag'
 
     def __str__(self):
@@ -39,15 +39,15 @@ class Post(models.Model):
     title = models.CharField(max_length=200)
     text = models.TextField()
     image = models.ImageField(upload_to='posts/')
-    category = models.ForeignKey(Categories, related_name='post', on_delete=models.SET_NULL, null=True)
+    category = models.ForeignKey(Categories, related_name='posts', on_delete=models.SET_NULL, null=True)
     tag = models.ManyToManyField(Tag, related_name='post')
     author = models.ForeignKey(User, related_name='posts', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(default='', max_length=200)
 
     class Meta:
-        verbose_name = 'Пост'
-        verbose_name_plural = 'Посты'
+        verbose_name = 'Post'
+        verbose_name_plural = 'Posts'
         db_table = 'Posts'
 
     def __str__(self):
@@ -63,6 +63,14 @@ class Post(models.Model):
         return self.comment.all()
 
 
+class Articles(models.Model):
+    image = models.ImageField(upload_to='articles/')
+    category = models.ForeignKey(Categories, related_name='articles', on_delete=models.SET_NULL, null=True, blank=True)
+
+    def get_absolute_url(self):
+        return reverse("main:post_list", kwargs={"slug": self.category.slug})
+
+
 class Recipe(models.Model):
     name = models.CharField(max_length=100)
     serves = models.CharField(max_length=50)
@@ -73,8 +81,8 @@ class Recipe(models.Model):
     post = models.ForeignKey(Post, related_name='recipes', on_delete=models.SET_NULL, null=True, blank=True)
 
     class Meta:
-        verbose_name = 'Рецепт'
-        verbose_name_plural = 'Рецепты'
+        verbose_name = 'Recipe'
+        verbose_name_plural = 'Recipes'
         db_table = 'Recipe'
 
     def __str__(self):
@@ -84,15 +92,30 @@ class Recipe(models.Model):
 class Comment(models.Model):
     name = models.CharField(max_length=50)
     email = models.CharField(max_length=100)
-    website = models.CharField(max_length=150, blank=True, null=True)
     message = models.TextField(max_length=500)
     create_at = models.DateTimeField(default=datetime.datetime.now)
     post = models.ForeignKey(Post, related_name='comment', on_delete=models.CASCADE)
 
     class Meta:
-        verbose_name = 'Комментарий'
-        verbose_name_plural = 'Комментарии'
+        verbose_name = 'Сomment'
+        verbose_name_plural = 'Comments'
         db_table = 'Comment'
 
     def __str__(self):
         return self.name
+
+
+class Photo(models.Model):
+    name = models.CharField(max_length=250)
+    image = models.ImageField(upload_to='gallery')
+    captions = models.TextField(blank=True)
+    create_date = models.DateTimeField(auto_now_add=True)
+    slug = models.SlugField(max_length=255)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        db_table = 'gallery'
+        verbose_name = 'photo'
+        verbose_name_plural = 'photos'

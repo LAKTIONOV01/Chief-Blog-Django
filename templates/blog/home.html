@@ -1,219 +1,33 @@
 {% extends 'base.html' %}
+{% load static menu_tags cache %}
 
 {% block content %}
 
-<!-- Hero Section Begin -->
-<section class="hero">
-    <div class="hero__slider owl-carousel">
-        <div class="hero__item">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-6 p-0">
-                        <div class="hero__inside__item hero__inside__item--wide set-bg"
-                             data-setbg="img/hero/hero-1.jpg">
-                            <div class="hero__inside__item__text">
-                                <div class="hero__inside__item--meta">
-                                    <span>08</span>
-                                    <p>Aug</p>
-                                </div>
-                                <div class="hero__inside__item--text">
-                                    <ul class="label">
-                                        <li>Vegan</li>
-                                        <li>Desserts</li>
-                                    </ul>
-                                    <h4>Vegan White Peach Mug Cobbler With CardamomVegan<br/> White Peach Mug
-                                        Cobbler With Cardamom</h4>
-                                    <ul class="widget">
-                                        <li>by <span>Admin</span></li>
-                                        <li>3 min read</li>
-                                        <li>20 Comment</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6  p-0">
-                        <div class="hero__inside__item hero__inside__item--small set-bg"
-                             data-setbg="img/hero/hero-2.jpg">
-                            <div class="hero__inside__item__text">
-                                <div class="hero__inside__item--meta">
-                                    <span>08</span>
-                                    <p>Aug</p>
-                                </div>
-                                <div class="hero__inside__item--text">
-                                    <ul class="label">
-                                        <li>Vegan</li>
-                                        <li>Desserts</li>
-                                    </ul>
-                                    <h5>How to Make a Milkshake With Any <br/>Ice Cream, Any Toppings...</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="hero__inside__item hero__inside__item--small set-bg"
-                             data-setbg="img/hero/hero-3.jpg">
-                            <div class="hero__inside__item__text">
-                                <div class="hero__inside__item--meta">
-                                    <span>08</span>
-                                    <p>Aug</p>
-                                </div>
-                                <div class="hero__inside__item--text">
-                                    <ul class="label">
-                                        <li>Vegan</li>
-                                        <li>Desserts</li>
-                                    </ul>
-                                    <h5>Vintage Copper Preserve Pan with <br/>Brass Handles, Mid 19th Century</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6  p-0">
-                        <div class="hero__inside__item set-bg" data-setbg="img/hero/hero-4.jpg">
-                            <div class="hero__inside__item__text">
-                                <div class="hero__inside__item--meta">
-                                    <span>08</span>
-                                    <p>Aug</p>
-                                </div>
-                                <div class="hero__inside__item--text">
-                                    <ul class="label">
-                                        <li>Vegan</li>
-                                        <li>Desserts</li>
-                                    </ul>
-                                    <h5>Marinated Lentil Salad with Zucch <br/>ini and Tomatoes</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="hero__item">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-6 p-0">
-                        <div class="hero__inside__item hero__inside__item--wide set-bg"
-                             data-setbg="img/hero/hero-1.jpg">
-                            <div class="hero__inside__item__text">
-                                <div class="hero__inside__item--meta">
-                                    <span>08</span>
-                                    <p>Aug</p>
-                                </div>
-                                <div class="hero__inside__item--text">
-                                    <ul class="label">
-                                        <li>Vegan</li>
-                                        <li>Desserts</li>
-                                    </ul>
-                                    <h4>Vegan White Peach Mug Cobbler With CardamomVegan<br/> White Peach Mug
-                                        Cobbler With Cardamom</h4>
-                                    <ul class="widget">
-                                        <li>by <span>Admin</span></li>
-                                        <li>3 min read</li>
-                                        <li>20 Comment</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 p-0">
-                        <div class="hero__inside__item hero__inside__item--small set-bg"
-                             data-setbg="img/hero/hero-3.jpg">
-                            <div class="hero__inside__item__text">
-                                <div class="hero__inside__item--meta">
-                                    <span>08</span>
-                                    <p>Aug</p>
-                                </div>
-                                <div class="hero__inside__item--text">
-                                    <ul class="label">
-                                        <li>Vegan</li>
-                                        <li>Desserts</li>
-                                    </ul>
-                                    <h5>How to Make a Milkshake With Any <br/>Ice Cream, Any Toppings...</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="hero__inside__item hero__inside__item--small set-bg"
-                             data-setbg="img/hero/hero-2.jpg">
-                            <div class="hero__inside__item__text">
-                                <div class="hero__inside__item--meta">
-                                    <span>08</span>
-                                    <p>Aug</p>
-                                </div>
-                                <div class="hero__inside__item--text">
-                                    <ul class="label">
-                                        <li>Vegan</li>
-                                        <li>Desserts</li>
-                                    </ul>
-                                    <h5>Vintage Copper Preserve Pan with <br/>Brass Handles, Mid 19th Century</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 p-0">
-                        <div class="hero__inside__item set-bg" data-setbg="img/hero/hero-4.jpg">
-                            <div class="hero__inside__item__text">
-                                <div class="hero__inside__item--meta">
-                                    <span>08</span>
-                                    <p>Aug</p>
-                                </div>
-                                <div class="hero__inside__item--text">
-                                    <ul class="label">
-                                        <li>Vegan</li>
-                                        <li>Desserts</li>
-                                    </ul>
-                                    <h5>Marinated Lentil Salad with Zucch <br/>ini and Tomatoes</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Hero Section End -->
+{% get_gallery %}
 
 <!-- Categories Section Begin -->
 <section class="categories spad">
     <div class="container">
+        {% cache 600 articles %}
         <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="categories__item set-bg" data-setbg="img/categories/cat-1.jpg">
+            {% for article in articles %}
+            <a href="{{ article.get_absolute_url }}" class="col-lg-3 col-md-6 col-sm-6">
+                <div class="categories__item set-bg" data-setbg="{{ article.image.url }}">
                     <div class="categories__hover__text">
-                        <h5>Dinner</h5>
-                        <p>28 articles</p>
+                        <h5>{{ article.category.name }}</h5>
+                        <p>{{ article.category.posts.count }} articles</p>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="categories__item set-bg" data-setbg="img/categories/cat-2.jpg">
-                    <div class="categories__hover__text">
-                        <h5>Dinner</h5>
-                        <p>28 articles</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="categories__item set-bg" data-setbg="img/categories/cat-3.jpg">
-                    <div class="categories__hover__text">
-                        <h5>Dinner</h5>
-                        <p>28 articles</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="categories__item set-bg" data-setbg="img/categories/cat-4.jpg">
-                    <div class="categories__hover__text">
-                        <h5>Dinner</h5>
-                        <p>28 articles</p>
-                    </div>
-                </div>
-            </div>
+            </a>
+            {% endfor %}
         </div>
+        {% endcache %}
     </div>
     <div class="categories__post">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-8">
-                    {% for post in post_list %}
+                    {% for post in posts %}
                     {% if forloop.first %}
                     <div class="categories__post__item categories__post__item--large">
                         <div class="categories__post__item__pic set-bg"
@@ -232,17 +46,17 @@
                             <ul class="post__widget">
                                 <li>by <span>{{ post.author }}</span></li>
                                 <li>3 min read</li>
-                                <li>20 Comment</li>
+                                <li>{{ post.get_comments.count }} Comment</li>
                             </ul>
                             <p>{{ post.text }}</p>
-                            <a href="#" class="primary-btn">Read more</a>
+                            <a href="{{ post.get_absolute_url }}" class="primary-btn">Read more</a>
                         </div>
                     </div>
                     {% endif %}
                     {% endfor %}
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6">
-                            {% for post in post_list %}
+                            {% for post in posts %}
                             {% if forloop.counter == 2 %}
                             <div class="categories__post__item">
                                 <div class="categories__post__item__pic small__item set-bg"
@@ -254,18 +68,18 @@
                                 </div>
                                 <div class="categories__post__item__text">
                                     <span class="post__label">Recipe</span>
-                                    <h3><a href="#">{{ post.title }}</a></h3>
+                                    <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
                                     <ul class="post__widget">
                                         <li>by <span>{{ post.author }}</span></li>
                                         <li>3 min read</li>
-                                        <li>20 Comment</li>
+                                        <li>{{ post.get_comments.count }} Comment</li>
                                     </ul>
                                     <p>{{ post.text }}</p>
                                 </div>
                             </div>
                             {% endif %}
                             {% endfor %}
-                            {% for post in post_list %}
+                            {% for post in posts %}
                             {% if forloop.counter == 3 %}
                             <div class="categories__post__item">
                                 <div class="categories__post__item__pic set-bg"
@@ -280,11 +94,11 @@
                                         <li>Vegan</li>
                                         <li>Desserts</li>
                                     </ul>
-                                    <h3><a href="#">{{ post.title }}</a></h3>
+                                    <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
                                     <ul class="post__widget">
                                         <li>by <span>{{ post.author }}</span></li>
                                         <li>3 min read</li>
-                                        <li>20 Comment</li>
+                                        <li>{{ post.get_comments.count }} Comment</li>
                                     </ul>
                                     <p>{{ post.text }}</p>
                                 </div>
@@ -302,7 +116,8 @@
                                         <li>Vegan</li>
                                         <li>Desserts</li>
                                     </ul>
-                                    <h3><a href="#">This Summer Snacking Cake Is theSweetest Excuse to...</a></h3>
+                                    <h3><a href="{{ post.get_absolute_url }}">This Summer Snacking Cake Is theSweetest
+                                        Excuse to...</a></h3>
                                     <div class="post__social">
                                         <span>Share</span>
                                         <a href="#"><i class="fa fa-facebook"></i> <span>82</span></a>
@@ -311,24 +126,25 @@
                                     </div>
                                 </div>
                             </div>
-                              {% for post in post_list %}
+                            {% for post in posts %}
                             {% if forloop.counter == 4 %}
                             <div class="categories__post__item">
                                 <div class="categories__post__item__pic smaller__large set-bg"
                                      data-setbg="{{ post.image.url }}">
                                     <div class="post__meta">
-                                        <h4>08</h4>
-                                        <span>Aug</span>
+                                        <h4>{{ post.created_at | date:'d'}}</h4>
+                                        <span>{{ post.created_at | date:'M'}}</span>
                                     </div>
                                 </div>
                                 <div class="categories__post__item__text">
                                     <span class="post__label">Smoothie</span>
-                                    <h3><a href="#">This 2-Ingredient Spread Makes Any Egg Sandwich So Much
+                                    <h3><a href="{{ post.get_absolute_url }}">This 2-Ingredient Spread Makes Any Egg
+                                        Sandwich So Much
                                         Better</a></h3>
                                     <ul class="post__widget">
-                                        <li>by <span>Admin</span></li>
+                                        <li>by <span>{{ post.author }}</span></li>
                                         <li>3 min read</li>
-                                        <li>20 Comment</li>
+                                        <li>{{ post.get_comments.count }} Comment</li>
                                     </ul>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
                                         tempor incididunt dolore magna aliqua. Quis ipsum suspendisse ultrices
@@ -339,7 +155,7 @@
                             {% endfor %}
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
-                              {% for post in post_list %}
+                            {% for post in posts %}
                             {% if forloop.counter == 5 %}
                             <div class="categories__post__item">
                                 <div class="categories__post__item__pic smaller__large set-bg"
@@ -351,12 +167,12 @@
                                 </div>
                                 <div class="categories__post__item__text">
                                     <span class="post__label">Dinner</span>
-                                    <h3><a href="#">{{ post.title }}</a>
+                                    <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
                                     </h3>
                                     <ul class="post__widget">
-                                        <li>by <span>Admin</span></li>
+                                        <li>by <span>{{ post.author }}</span></li>
                                         <li>3 min read</li>
-                                        <li>20 Comment</li>
+                                        <li>{{ post.get_comments.count }} Comment</li>
                                     </ul>
                                     <p>{{ post.text }}</p>
                                 </div>
@@ -364,35 +180,35 @@
                             {% endif %}
                             {% endfor %}
                             <div class="categories__post__item__small">
-                                <img src="{{ post.image.url }}" alt="">
+                                <img src="{% static 'img/categories/categories-post/quote.png' %}" alt="">
                                 <p>Lorem ipsum dolor amet, consectetur adipiscing elit, sed do eiusmod tempor
                                     incididunt labore et dolore magna aliqua gravida.</p>
                                 <div class="posted__by">Elena T.Jaivy</div>
                             </div>
-                              {% for post in post_list %}
+                            {% for post in posts %}
                             {% if forloop.counter == 6 %}
                             <div class="categories__post__item">
                                 <div class="categories__post__item__pic smaller__large set-bg"
                                      data-setbg="{{ post.image.url }}">
                                     <div class="post__meta">
-                                      <h4>{{ post.created_at | date:'d'}}</h4>
+                                        <h4>{{ post.created_at | date:'d'}}</h4>
                                         <span>{{ post.created_at | date:'M'}}</span>
                                     </div>
                                 </div>
                                 <div class="categories__post__item__text">
                                     <span class="post__label">Drinks</span>
-                                    <h3><a href="#">{{ post.title }}</a></h3>
+                                    <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
                                     <ul class="post__widget">
                                         <li>by <span>{{ post.author }}</span></li>
                                         <li>3 min read</li>
-                                        <li>20 Comment</li>
+                                        <li>{{ post.get_comments.count }} Comment</li>
                                     </ul>
                                     <p>{{ post.text }}</p>
                                 </div>
                             </div>
                             {% endif %}
                             {% endfor %}
-                              {% for post in post_list %}
+                            {% for post in posts %}
                             {% if forloop.counter == 7 %}
                             <div class="categories__post__item">
                                 <div class="categories__post__item__pic set-bg"
@@ -407,11 +223,11 @@
                                         <li>Vegan</li>
                                         <li>Desserts</li>
                                     </ul>
-                                    <h3><a href="#">{{ post.title }}</a></h3>
+                                    <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
                                     <ul class="post__widget">
-                                        <li>by <span>Admin</span></li>
+                                        <li>by <span>{{ post.author }}</span></li>
                                         <li>3 min read</li>
-                                        <li>20 Comment</li>
+                                        <li>{{ post.get_comments.count }} Comment</li>
                                     </ul>
                                     <p>{{ post.text }}</p>
                                 </div>
@@ -421,7 +237,7 @@
                         </div>
                         <div class="col-lg-12 text-center">
                             <div class="load__more__btn">
-                                <a href="#">Load more</a>
+                                <a href="{% url 'contact:about' %}">Load more</a>
                             </div>
                         </div>
                     </div>

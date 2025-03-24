@@ -1,16 +1,32 @@
-{% load menu_tags %}
+{% load menu_tags static mptt_tags cache %}
 <!-- Humberger Begin -->
 <div class="humberger__menu__overlay"></div>
 <div class="humberger__menu__wrapper">
     <div class="humberger__menu__logo">
-        <a href="/"><img src="img/humberger/humberger-logo.png" alt=""></a>
+        <a href="/"><img src="{% static 'img/humberger/humberger-logo.png' %}" alt=""></a>
     </div>
     <nav class="humberger__menu__nav mobile-menu">
         <ul>
             <li><a href="{% url 'home:main' %}">Home</a></li>
-            {% get_categories %}
-            <li><a href="./about.html">About</a></li>
-            <li><a href="./contact.html">Contact</a></li>
+            <li class="dropdown"><a href="/">Categories</a>
+                {% cache 600 hamburger_categories %}
+                <ul class="dropdown__menu">
+                    {% get_categories as categories %}
+                    {% recursetree categories %}
+                    <li>
+                        <a href="{% url 'home:post_list' node.slug %}">{{ node.name }} <span>{{ categories.post_set.count }}</span></a>
+                        {% if not node.is_leaf_node %}
+                        <ul class="children dropdown-children">
+                            {{ children }}
+                        </ul>
+                        {% endif %}
+                    </li>
+                    {% endrecursetree %}
+                </ul>
+                {% endcache %}
+            </li>
+            <li><a href="{% url 'contact:about' %}">About</a></li>
+            <li><a href="{% url 'contact:message' %}">Contact</a></li>
         </ul>
     </nav>
     <div id="mobile-menu-wrap"></div>
@@ -18,16 +34,16 @@
         <div class="humberger__menu__title sidebar__item__title">
             <h6>About me</h6>
         </div>
-        <img src="img/humberger/humberger-about.jpg" alt="">
-        <h6>Hi every one! I,m Lena Mollein.</h6>
+        <img src="{% static 'img/humberger/humberger-about.jpg' %}" alt="">
+        <h6>Hi every one! I,m Pavel (Python Developer).</h6>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
             dolore magna aliqua.</p>
         <div class="humberger__menu__about__social sidebar__item__follow__links">
-            <a href="#"><i class="fa fa-facebook"></i></a>
-            <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-youtube-play"></i></a>
-            <a href="#"><i class="fa fa-instagram"></i></a>
-            <a href="#"><i class="fa fa-envelope-o"></i></a>
+            <a href="https://t.me/dev_siemens"><i class="fa fa-facebook"></i></a>
+            <a href="https://t.me/dev_siemens"><i class="fa fa-twitter"></i></a>
+            <a href="https://t.me/dev_siemens"><i class="fa fa-youtube-play"></i></a>
+            <a href="https://t.me/dev_siemens"><i class="fa fa-instagram"></i></a>
+            <a href="https://t.me/dev_siemens"><i class="fa fa-envelope-o"></i></a>
         </div>
     </div>
     <div class="humberger__menu__subscribe">

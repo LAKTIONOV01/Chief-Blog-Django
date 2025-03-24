@@ -1,11 +1,12 @@
-{% load static %}
+{% load static menu_tags mptt_tags cache %}
+
 <div class="sidebar__item">
     <div class="sidebar__about__item">
         <div class="sidebar__item__title">
             <h6>About me</h6>
         </div>
         <img src="{% static 'img/sidebar/sidebar-about.jpg' %}" alt="">
-        <h6>Hi every one! I,m <span>Lena Mollein.</span></h6>
+        <h6>Hi every one! I,m <span>Pavel (Python Developer)</span></h6>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
             incididunt ut labore et dolore magna aliqua.</p>
         <a href="{% url 'contact:about' %}" class="primary-btn">Read more</a>
@@ -85,16 +86,16 @@
         <div class="sidebar__item__title">
             <h6>Categories</h6>
         </div>
+        {% cache 600 sidebar_categories %}
         <ul>
-            <li><a href="#">Recipes <span>128</span></a></li>
-            <li><a href="#">Dinner <span>32</span></a></li>
-            <li><a href="#">Dessert <span>86</span></a></li>
-            <li class="p-left"><a href="#">Smothie <span>25</span></a></li>
-            <li class="p-left"><a href="#">Drinks <span>36</span></a></li>
-            <li class="p-left"><a href="#">Cakes <span>15</span></a></li>
-            <li><a href="#">Vegan <span>63</span></a></li>
-            <li><a href="#">Weightloss <span>27</span></a></li>
+            {% get_categories as categories %}
+            {% recursetree categories %}
+            <li>
+                <a href="{% url 'home:post_list' node.slug %}">{{ node.name }}<span>{{ node.posts.count }}</span></a>
+            </li>
+            {% endrecursetree %}
         </ul>
+        {% endcache %}
     </div>
     <div class="sidebar__subscribe__item">
         <div class="sidebar__item__title">
@@ -102,7 +103,7 @@
         </div>
         <p>Subscribe to our newsletter and get our newest updates right on your inbox.</p>
         <form action="#">
-            <input type="text" class="email-input" placeholder="Your email">
+            <input type="text" class="email-input" placeholder="telegram - @dev_siemens">
             <label for="s-agree-check">
                 I agree to the terms & conditions
                 <input type="checkbox" id="s-agree-check">

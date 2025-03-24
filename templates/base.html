@@ -1,4 +1,4 @@
-{% load static %}
+{% load static cache %}
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -8,29 +8,35 @@
     <meta name="keywords" content="Foodeiblog, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Foodeiblog | Template</title>
+    <title>Foodie Blog</title>
 
+    {% cache 600 fonts %}
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800,900&display=swap"
           rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Unna:400,700&display=swap" rel="stylesheet">
+    {% endcache %}
 
-    <!-- Css Styles -->
+
+    <!-- CSS Styles -->
+    {% cache 600 css %}
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/elegant-icons.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+    {% endcache %}
 </head>
 
 <body>
+
 <!-- Page Preloder -->
 <div id="preloder">
     <div class="loader"></div>
 </div>
 
-
+<!-- Hamburger Menu -->
 {% include 'blog/include/hamb_menu.html' %}
 
 <!-- Header Section Begin -->
@@ -44,7 +50,8 @@
                     </div>
                 </div>
                 <div class="col-lg-8 col-md-10 order-md-2 order-3">
-                    {% include 'blog/include/top_nav.html' %}
+                    <!-- Including categories -->
+                    {% include 'blog/include/categories.html' %}
                 </div>
                 <div class="col-lg-2 col-md-1 col-6 order-md-3 order-2">
                     <div class="header__search">
@@ -58,21 +65,21 @@
         <div class="row">
             <div class="col-lg-3 col-md-3">
                 <div class="header__btn">
-                    <a href="./signin.html" class="primary-btn">Subscribe</a>
+                    <a href="https://t.me/dev_siemens" class="primary-btn">Subscribe</a>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6">
                 <div class="header__logo">
-                    <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                    <a href="/"><img src="{% static 'img/logo.png' %}" alt=""></a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3">
                 <div class="header__social">
-                    <a href="#"><i class="fa fa-facebook"></i></a>
-                    <a href="#"><i class="fa fa-twitter"></i></a>
-                    <a href="#"><i class="fa fa-youtube-play"></i></a>
-                    <a href="#"><i class="fa fa-instagram"></i></a>
-                    <a href="#"><i class="fa fa-envelope-o"></i></a>
+                    <a href="https://t.me/dev_siemens"><i class="fa fa-facebook"></i></a>
+                    <a href="https://t.me/dev_siemens"><i class="fa fa-twitter"></i></a>
+                    <a href="https://t.me/dev_siemens"><i class="fa fa-youtube-play"></i></a>
+                    <a href="https://t.me/dev_siemens"><i class="fa fa-instagram"></i></a>
+                    <a href="https://t.me/dev_siemens"><i class="fa fa-envelope-o"></i></a>
                 </div>
             </div>
         </div>
@@ -82,8 +89,8 @@
 
 {% block content %}
 
-
 {% endblock %}
+
 
 <!-- Footer Section Begin -->
 <footer class="footer">
@@ -98,6 +105,7 @@
                     <span>23,7k follower</span>
                 </div>
             </div>
+            {% cache 600 footer_images %}
             <div class="row">
                 <div class="col-lg-2 col-md-2 col-sm-4 col-6">
                     <div class="footer__instagram__item set-bg" data-setbg="{% static 'img/footer/ip-1.jpg' %}"></div>
@@ -118,6 +126,7 @@
                     <div class="footer__instagram__item set-bg" data-setbg="{% static 'img/footer/ip-6.jpg' %}"></div>
                 </div>
             </div>
+            {% endcache %}
         </div>
     </div>
     <div class="container">
@@ -125,23 +134,23 @@
             <div class="col-lg-12">
                 <div class="footer__text">
                     <div class="footer__logo">
-                        <a href="#"><img src="img/logo.png" alt=""></a>
+                        <a href="/"><img src="img/logo.png" alt=""></a>
                     </div>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
                         ut<br/> labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus
                         commodo viverra<br/> maecenas accumsan lacus vel facilisis. </p>
                     <div class="footer__social">
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-instagram"></i></a>
-                        <a href="#"><i class="fa fa-youtube-play"></i></a>
-                        <a href="#"><i class="fa fa-envelope-o"></i></a>
+                        <a href="https://t.me/dev_siemens"><i class="fa fa-facebook"></i></a>
+                        <a href="https://t.me/dev_siemens"><i class="fa fa-twitter"></i></a>
+                        <a href="https://t.me/dev_siemens"><i class="fa fa-instagram"></i></a>
+                        <a href="https://t.me/dev_siemens"><i class="fa fa-youtube-play"></i></a>
+                        <a href="https://t.me/dev_siemens"><i class="fa fa-envelope-o"></i></a>
                     </div>
                 </div>
                 <div class="footer__copyright">
                     <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         Copyright &copy;<script>document.write(new Date().getFullYear());</script>
-                        All rights reserved <br> <strong>Pavel Laktionov (Python Developer) Template</strong>
+                        All rights reserved <br> <strong>Pavel Laktionov (Python Developer) Template | Telegram - @dev_siemens</strong>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                 </div>
             </div>
@@ -161,12 +170,14 @@
 </div>
 <!-- Search End -->
 
-<!-- Js Plugins -->
+<!-- JS Plugins -->
+{% cache 600 js%}
 <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
 <script src="{% static 'js/jquery.slicknav.js' %}"></script>
 <script src="{% static 'js/owl.carousel.min.js' %}"></script>
 <script src="{% static 'js/main.js' %}"></script>
+{% endcache %}
 </body>
 
 </html>

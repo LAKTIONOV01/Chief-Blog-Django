@@ -1,0 +1,10 @@
+cache/
+venv/
+media/
+__pycache__/
+
+#ide
+.idea/
+
+#django stuff
+*.sqlite3

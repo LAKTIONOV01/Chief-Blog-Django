@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static cache %}
 
 
 <body>
 
 {% block content %}
 <!-- Single Post Section Begin -->
+
 <section class="single-post spad">
     <div class="single-post__hero set-bg" data-setbg="{{ post.image.url }}"></div>
     <div class="container">
@@ -23,9 +24,9 @@
                         </ul>
                         <h4>{{ post.title }}</h4>
                         <ul class="widget">
-                            <li>by {{ post.author }}</li>
+                            <li>By {{ post.author }}</li>
                             <li>3 min read</li>
-                            <li>20 Comment</li>
+                            <li>{{ post.get_comments.count }} Comment</li>
                         </ul>
                     </div>
                 </div>
@@ -50,11 +51,11 @@
                             </li>
                             <li>
                                 <h5><i class="fa fa-clock-o"></i> PREP TIME</h5>
-                                <span>{{ recipe.prep_time }}</span>
+                                <span>{{ recipe.prep_time }} minute</span>
                             </li>
                             <li>
                                 <h5><i class="fa fa-clock-o"></i> Cook TIME</h5>
-                                <span>{{ recipe.cook_time }}</span>
+                                <span>{{ recipe.cook_time }} minute</span>
                             </li>
                             <li><a href="#" class="primary-btn"><i class="fa fa-print"></i> Read more</a></li>
                         </ul>
@@ -69,7 +70,7 @@
                     <div class="single-post__recipe__details__direction">
                         <h5>Directions</h5>
                         <ul>
-                            <li><span>1.</span> {{ recipe.directions | safe }}</li>
+                            <li>{{ recipe.directions | safe }}</li>
                         </ul>
                     </div>
                     {% endfor %}
@@ -95,7 +96,7 @@
                 <div class="single-post__more__details">
                     <div class="row">
                         <div class="col-lg-6 col-md-6">
-                            <img src="img/categories/single-post/single-post-desc.jpg" alt="">
+                            <img src="{% static 'img/categories/single-post/single-post-desc.jpg' %}" alt="">
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <p>Vestibulum commodo nulla eu augue tincidunt rutrum. Suspendisse interdum lacus in
@@ -130,30 +131,36 @@
                 <div class="single-post__next__previous">
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6">
-                            <a href="#" class="single-post__previous">
-                                <h6><span class="arrow_carrot-left"></span> Previous posts</h6>
+                            {% if previous_post %}
+                            <a class="single-post__previous"
+                               href="{% url 'main:post_single' previous_post.category previous_post.slug %}">
+                                <h6><span class="arrow_carrot-left"></span> Previous post</h6>
                                 <div class="single-post__previous__meta">
-                                    <h4>08</h4>
-                                    <span>Aug</span>
+                                    <h4>{{ post.created_at | date:'d'}}</h4>
+                                    <span>{{ post.created_at | date:'M'}}</span>
                                 </div>
                                 <div class="single-post__previous__text">
-                                    <span>Dinner</span>
-                                    <h5>The Best Weeknight Baked <br/>Potatoes, 3 Creative Ways</h5>
+                                    <span>{{ previous_post.category }}</span>
+                                    <h5>{{ previous_post.title }}</h5>
                                 </div>
                             </a>
+                            {% endif %}
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
-                            <a href="#" class="single-post__next">
-                                <h6>Next posts <span class="arrow_carrot-right"></span></h6>
+                            {% if next_post %}
+                            <a class="single-post__next"
+                               href="{% url 'main:post_single' next_post.category next_post.slug %}">
+                                <h6>Next post <span class="arrow_carrot-right"></span></h6>
                                 <div class="single-post__next__meta">
-                                    <h4>05</h4>
-                                    <span>Aug</span>
+                                    <h4>{{ post.created_at | date:'d'}}</h4>
+                                    <span>{{ post.created_at | date:'M'}}</span>
                                 </div>
                                 <div class="single-post__next__text">
-                                    <span>Smoothie</span>
-                                    <h5>The $8 French Rosé I Buy in <br/>Bulk Every Summer</h5>
+                                    <span>{{ next_post.category }}</span>
+                                    <h5>{{ next_post.title }}</h5>
                                 </div>
                             </a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -201,7 +208,6 @@
                         <div class="input-list">
                             <input type="text" placeholder="Name" name="name">
                             <input type="text" placeholder="Email" name="email">
-                            <input type="text" placeholder="Website" name="website">
                         </div>
                         <textarea placeholder="Message" name="message"></textarea>
                         <button type="submit" class="site-btn">Submit</button>
@@ -211,6 +217,7 @@
         </div>
     </div>
 </section>
+
 <!-- Single Post Section End -->
 {% endblock %}
 

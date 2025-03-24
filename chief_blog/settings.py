@@ -16,7 +16,6 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
@@ -26,8 +25,9 @@ SECRET_KEY = 'django-insecure-r70w1enopg+e9^-y89k_$be^e=453ic7nbx9ez8dfdo6lj!rc%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
+# handler404 = 'chief_blog.main.views.custom_404_view'
 
 # Application definition
 
@@ -40,9 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'mptt',
     'ckeditor',
+    'debug_toolbar',
     'main',
     'contact',
-
 ]
 
 MIDDLEWARE = [
@@ -53,10 +53,19 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = 'chief_blog.urls'
 
+# Files Cache
+
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
+        "LOCATION": os.path.join(BASE_DIR, 'cache'),
+    }
+}
 
 TEMPLATES = [
     {
@@ -76,7 +85,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'chief_blog.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
@@ -86,7 +94,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -106,7 +113,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
@@ -118,18 +124,23 @@ USE_I18N = True
 
 USE_TZ = True
 
+# Debug-ToolBar IPS
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+    "localhost",
+]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 CKEDITOR_UPLOAD_PATH = 'uploads/'
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
